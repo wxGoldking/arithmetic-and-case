@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        写一个 function，它查找数组（第一个参数）并返回数组中第一个通过某种方法（第二个参数）验证的元素。
+        find([1, 3, 5, 8, 9, 10], function(num) { return num % 2 === 0; }) 应该返回 8。
+        find([1, 3, 5, 9], function(num) { return num % 2 === 0; }) 应该返回 undefined。
+    </h1>
+    <script type="text/javascript">
+        function find(arr, func) {
+            arr=arr.filter(func);
+            num=arr[0];
+            return num;
+        }
+            
+    find([1, 2, 3, 4], function(num){ return num % 2 === 0; });
+
+
+    </script>
+</body>
+
+</html>

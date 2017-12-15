@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒泡算法动画</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        ul,li{
+            list-style:none;
+        }
+        #wrap{
+            overflow: hidden;
+            margin:0 auto;
+        }
+        #wrap li{
+            float: left;
+            position: relative;
+            margin-left:5px;
+            width: 50px;
+            background-color:yellowgreen;
+            text-align: center;
+        }
+        #wrap li b{
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            top:-20px;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <ul id="wrap">
+    </ul>
+    <script>
+        var arr=[25,62,132,18,89,99,25,153,68,14,1,99,118,27,49];//待操作的数组
+        var ul=document.getElementById("wrap");
+        var lis=ul.getElementsByTagName("li");
+        //update函数将所有数组的状态映射到DOM
+        function update(arr,i,j){
+            ul.innerHTML="";//先清空ul
+            arr.forEach((item,inxde)=>{
+                var li=document.createElement("li");
+                var b=document.createElement("b");
+                li.style.height=item*2+"px";
+                li.style.marginTop=700-item*2+"px";
+                b.innerHTML=item;
+                li.appendChild(b);
+                ul.appendChild(li);
+            })
+            //当前比较的两个深绿色
+                lis[j].style.backgroundColor="green";
+                lis[j+1].style.backgroundColor="green";
+            //排好序的橙色
+                Array.prototype.forEach.call(lis,(item,index)=>{
+                    if(index>=arr.length-i){
+                        lis[index].style.backgroundColor='orange';
+                    }
+                })
+        }
+        //第一次展示
+        update(arr,0,0);
+        //Promise等待函数
+        var next = function () {
+            return new Promise(function (resolve) {
+                return setTimeout(resolve, 500);
+            })
+        };
+        //定义async 函数start 执行冒泡排序
+        var start=async function () {
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = 0; j < arr.length-1-i; j++) {
+                    if(arr[j]>arr[j+1]){
+                        var temp=arr[j];
+                        arr[j]=arr[j+1];
+                        arr[j+1]=temp;
+                    };
+                    //冒泡一次后等待
+                    await next();
+                    //映射到dom
+                    update(arr,i,j);
+                }
+            }
+            //排序完成全部为橙色
+            Array.prototype.forEach.call(lis,(item,index)=>{
+                lis[index].style.backgroundColor='orange';
+            })
+        };
+        start();
+    </script>
+</body>
+</html>

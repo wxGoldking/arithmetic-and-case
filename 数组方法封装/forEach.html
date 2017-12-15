@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Array.prototype.forEach=function(callback){
+            var result=[];
+            for (var i = 0; i < this.length; i++) {
+                callback(this[i],i,this)
+            };
+        }
+        var brr=[
+        {
+            name:"haha",
+            age:15,
+            sex:"nan"
+        },
+        {
+            name:"xixi",
+            age:19,
+            sex:"nv"
+        },
+        {
+            name:"dashu",
+            age:31,
+            sex:"nan"
+        },
+        {
+            name:"jiejie",
+            age:27,
+            sex:"nv"
+        },
+        {
+            name:"yeye",
+            age:72,
+            sex:"nan"
+        },
+        ];
+      brr.forEach((item,index)=>{
+            return item.sing=function(){
+                console.log("lalalalalalalala!")
+            };
+        });
+      console.log(brr);
+    </script>
+</body>
+</html>

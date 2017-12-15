@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        找到所提供参数的最小公倍数，这两个参数可以均匀分配，以及这些参数之间范围内的所有最小公倍数。
+        
+        范围是两个数字构成的数组，两个数字不一定按数字顺序排序。
+        
+        例如对 1 和 3 —— 找出能被 1 和 3 和它们之间所有数字整除的最小公倍数。
+    </h1>
+    <script type="text/javascript">
+        function smallestCommons(arr) {
+            function mincommon(a,b){
+                var i=b;
+                while(i%a!=0||i%b!=0){
+                    i++;
+                }
+                return i;
+            }
+            var max=arr[0]>=arr[1]?arr[0]:arr[1];
+            var min=arr[0]<arr[1]?arr[0]:arr[1];
+            for (let i = min; i <=max; i++) {
+                min=mincommon(min,i);
+            }
+            return min;
+
+        }
+            
+            
+        smallestCommons([1,5]);
+
+
+    </script>
+</body>
+
+</html>

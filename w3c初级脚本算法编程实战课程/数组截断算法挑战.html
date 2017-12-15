@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+<h1>   编写一个函数,把一个数组arr按照指定的数组大小size分割成若干个数组块。
+
+例如:chunk([1,2,3,4],2)=[[1,2],[3,4]];
+
+chunk([1,2,3,4,5],2)=[[1,2],[3,4],[5]];</h1>
+<script type="text/javascript">
+    function chunk(arr, size) {
+      var temp=[];
+      var end=0;
+      for (var i = 0; i < arr.length; i+=size) {
+        end=i+size>arr.length?arr.length:i+size;
+        temp.push(arr.slice(i,end));
+      };
+      arr=temp;
+      return arr;
+    }
+chunk(["a", "b", "c", "d"], 2);
+</script>
+</body>
+</html>

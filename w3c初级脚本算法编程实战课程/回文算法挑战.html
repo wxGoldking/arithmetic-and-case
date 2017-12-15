@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+// 如果给定的字符串是回文，返回true，反之，返回false。
+// palindrome(回文)是指一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样。
+         function palindrome(str) {
+           str=str.replace(/[^0-9a-zA-Z]/g,"");
+           var temp="";
+           for (var i = 0; i < str.length/2; i++) {
+               if(str[i]==str[str.length-1-i].toLowerCase()||str[i]==str[str.length-1-i].toUpperCase()){
+                   continue;
+               }else{
+                    return false;
+               }
+           };
+            return true;
+        }
+        console.log(palindrome("0_0 (: /-\ :) 0-0"));
+
+    </script>
+</body>
+</html>

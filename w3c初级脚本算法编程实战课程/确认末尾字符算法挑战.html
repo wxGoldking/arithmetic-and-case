@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+// 检查一个字符串(str)是否以指定的字符串(target)结尾。
+// 如果是，返回true;如果不是，返回false。
+    function confirmEnding(str, target) {
+      //ES2015中引入的新方法；
+      // str=str.endsWith(target);
+      var temp="";
+      for (var i = 0; i < target.length; i++) {
+        temp+=str[str.length-target.length+i];
+      };
+      if(temp==target){
+        str=true;
+      }else{
+        str=false;
+      }
+      return str;
+    }
+
+confirmEnding("Bastian", "n");
+    </script>
+</body>
+</html>

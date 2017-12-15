@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Array.prototype.reduce=function(callback,init){
+            var result=init||this[0];
+            for (var i = 0; i < this.length-1; i++) {
+                result=callback(result,this[i+1],i,this);
+            };
+            return result;
+        }
+        var brr=[
+        {
+            name:"haha",
+            age:15,
+            sex:"nan"
+        },
+        {
+            name:"xixi",
+            age:19,
+            sex:"nv"
+        },
+        {
+            name:"dashu",
+            age:31,
+            sex:"nan"
+        },
+        {
+            name:"yeye",
+            age:72,
+            sex:"nan"
+        },
+        {
+            name:"jiejie",
+            age:27,
+            sex:"nv"
+        },
+
+    ];
+      console.log([1,2,3,4,5].reduce((a,b)=>{
+            return a+b;
+        }));
+      console.log(brr.reduce((a,b)=>{
+            return a.age>b.age?a:b;
+        }));
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Array.prototype.filter=function(callback){
+            var result=[];
+            for (var i = 0; i < this.length; i++) {
+                if(callback(this[i],i,this)){
+                    result.push(this[i]);
+                }
+            };
+            return result;
+        }
+        var brr=[
+        {
+            name:"haha",
+            age:15,
+            sex:"nan"
+        },
+        {
+            name:"xixi",
+            age:19,
+            sex:"nv"
+        },
+        {
+            name:"dashu",
+            age:31,
+            sex:"nan"
+        },
+        {
+            name:"jiejie",
+            age:27,
+            sex:"nv"
+        },
+        {
+            name:"yeye",
+            age:72,
+            sex:"nan"
+        },
+        ];
+        console.log(brr.filter((item,index)=>{
+            return item.age==27;
+        }))
+        console.log(brr);
+    </script>
+</body>
+</html>

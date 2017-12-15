@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        对嵌套的数组进行平铺嵌套数组。你必须考虑到不同层级的嵌套。
+        steamroller([[["a"]], [["b"]]]) 应该返回 ["a", "b"]。
+        steamroller([1, [2], [3, [[4]]]]) 应该返回 [1, 2, 3, 4]。
+        steamroller([1, [], [3, [[4]]]]) 应该返回 [1, 3, 4]。
+        steamroller([1, {}, [3, [[4]]]]) 应该返回 [1, {}, 3, 4]。
+    </h1>
+    <script type="text/javascript">
+
+    function steamroller(arr) {
+        var result=[];
+        const pingpu=(arr)=>{
+            arr.forEach((item)=>{
+                if(Array.isArray(item)){
+                    pingpu(item);
+                }else{
+                    result.push(item);
+                }
+            }) 
+        }
+        pingpu(arr);
+        return result;
+    }
+
+    console.log(steamroller([1, {}, [3,[], [[4]]]]));
+
+
+
+    </script>
+</body>
+
+</html>

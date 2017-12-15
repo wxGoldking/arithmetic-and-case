@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>从传递进来的字母序列中找到缺失的字母并返回它。
+    
+    如果所有字母都在序列中，返回 undefined。
+  </h1>
+  <script type="text/javascript">
+  function fearNotLetter(str) {
+    var allstr="abcdefghijklmnopqrstuvwxyz";
+    if(allstr.indexOf(str)==-1){
+      var start=allstr.indexOf(str[0]);
+      var stop=allstr.indexOf(str[str.length-1]);
+      var newstr=allstr.slice(start,stop);
+      var sum="";
+      for (let i = 0; i < newstr.length; i++) {
+        if(str.indexOf(newstr[i])==-1){
+            sum+=newstr[i];
+        };
+      }
+      str=sum;
+    }else{
+      str=undefined;
+    }
+    return str;
+  }
+    
+    fearNotLetter("abce");
+    
+      
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //将一个数字按各数位拆分为数组各项
+         function toArr(num){
+            var str=num+"";
+            var arr=[];
+            for (var i = 0; i < str.length; i++) {
+                arr.push(str[i]-0);
+            };
+            return arr;
+         }
+         //以乘法竖式的思想，将乘法转化为各个数位的单个运算，封装乘法函数
+         function chengfa(num1,num2){
+            var arr=toArr(num1);
+            var brr=toArr(num2);
+                var crr=[];
+                for (var j = brr.length-1; j >=0; j--) {
+                    crr[brr.length-1-j]=[];
+                    for (var k = 0; k < arr.length; k++) {
+                        crr[brr.length-1-j][k]=brr[j]*arr[k];
+                    };
+                };
+                for (var m = 0; m < crr.length; m++) {
+                    for (var n = crr[m].length-1; n >= 1; n--) {
+                        crr[m][n-1]=parseInt(crr[m][n]/10)+crr[m][n-1];
+                        crr[m][n]=crr[m][n]%10;
+                    };
+                    var temp=crr[m][0]+"";
+                    crr[m].splice(0,1);
+                    for (var l = temp.length-1; l >=0; l--) {
+                        crr[m].unshift(temp[l]-0);
+                    };
+                };
+                for (var p = 0; p < crr.length; p++) {
+                    for (var q = 0; q < p; q++) {
+                        crr[p].push(0);
+                    };
+                };
+                var srr=[];
+                for (var m1 =crr[crr.length-1].length-1,k1=1; m1 >=0; m1--,k1++) {
+                    for (var n1 = 0; n1 < crr.length; n1++) {
+                        var tem=crr[n1].length-k1;
+                        if(tem>=0){
+                            if(srr[m1]!=undefined){
+                                srr[m1]+=crr[n1][crr[n1].length-k1];
+                            }else{
+                                srr[m1]=crr[n1][crr[n1].length-k1];
+                            }
+                        }
+                    };
+                };
+                for (var n1 = srr.length-1; n1 >= 1; n1--) {
+                        srr[n1-1]=parseInt(srr[n1]/10)+srr[n1-1];
+                        srr[n1]=srr[n1]%10;
+                    };
+                var temp=srr[0]+"";
+                srr.splice(0,1);
+                for (var l = temp.length-1; l >=0; l--) {
+                    srr.unshift(temp[l]-0);
+                };
+                for (var l = 0; l < srr.length; l++) {
+                    if(srr[l]!=0){
+                        srr.splice(0,l);
+                        break;
+                    }
+                };
+                return srr.join("");
+         }
+         function bigNumKramp(num){
+            var init=1;
+            for (var i = 2; i <=num; i++) {
+                init=chengfa(init,i);
+            };
+            console.log(init,init.length);
+         }
+    </script>
+    <script type="text/javascript">
+            function f(n) {
+                //从1开始乘,数组a存储各个数位
+                var a = [1];
+                //乘到数字n
+                for (var i = 1; i <= n; i++) {
+                    //每一个数位都要与i相乘，c!= 0表示有进位，
+                    for (var j = 0, c = 0; j < a.length || c != 0; j++) {//m是每位的计算结果，j >= a.length表示a数组位数不够，出现进位；
+                        var m = (j < a.length) ? (i * a[j] + c) : c;
+                        a[j] = m % 10;//本位的数字
+                        c = (m - a[j]) / 10;//进位
+                    }
+                }
+                console.log(a.reverse().join(""));
+            }
+        </script>
+</body>
+</html>

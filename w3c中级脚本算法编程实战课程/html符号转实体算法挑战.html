@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        将字符串中的字符 &、
+        <、>、" （双引号）, 以及 ' （单引号）转换为它们对应的 HTML 实体。
+    </h1>
+    <script type="text/javascript">
+        function convert(str) {
+            var arr = str.match(/([\&\>\<\"\'])/g);
+            if (arr) {
+                arr.forEach(item => {
+                    var index = str.indexOf(item);
+                    switch (item) {
+                        case "&": item = "&amp;";
+                            break;
+                        case ">": item = "&gt;";
+                            break;
+                        case "<": item = "&lt;";
+                            break;
+                        case "'": item = "&apos;";
+                            break;
+                        case '"': item = "&quot;";
+                            break;
+                    }
+                    str = str.slice(0, index) + item + str.slice(index + 1);
+                });
+            }
+            return str;
+        }
+
+        convert("Dolce & Gabbana");
+
+
+    </script>
+</body>
+
+</html>

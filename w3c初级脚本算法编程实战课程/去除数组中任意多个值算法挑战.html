@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+<h1> 实现一个 destroyer 函数，第一个参数是初始数组，后跟一个或多个参数。从初始数组中删除与这些参数具有相同值的所有元素。</h1>
+<script type="text/javascript">
+    function destroyer(arr) {
+      //用类数组对象调用数字对象的方法
+      var trr=Array.prototype.slice.call(arguments,1);
+      arr=arr.filter(function(value){
+        if(trr.indexOf(value)!=-1){
+          return false;
+        }else{
+          return true;
+        }
+      })
+      return arr;
+    }
+
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+</script>
+</body>
+</html>

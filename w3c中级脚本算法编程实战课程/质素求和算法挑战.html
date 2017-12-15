@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        求小于等于给定数值的质数之和。
+        
+        只有 1 和它本身两个约数的数叫质数。例如，2 是质数，因为它只能被 1 和 2 整除。1 不是质数，因为它只能被自身整除。
+        
+        给定的数不一定是质数。
+        sumPrimes(10) 应该返回一个数字。
+        sumPrimes(10) 应该返回 17。
+        sumPrimes(977) 应该返回 73156。
+    </h1>
+    <script type="text/javascript">
+        function sumPrimes(num) {
+            function iszhishu(shu){
+                if(shu==1) return false;
+                var count=0;
+                for (let i = 1; i <=shu/2; i++) {
+                    if(shu%i==0) count++;
+                    if(count>1){
+                        return false;
+                    }
+                }
+                return true;
+            }
+            var sum=0;
+            for (let i = 1; i <= num; i++) {
+                if(iszhishu(i)) sum+=i;
+                
+            }
+            num=sum;
+            return num;
+        }
+            
+        sumPrimes(10);
+
+
+    </script>
+</body>
+
+</html>
