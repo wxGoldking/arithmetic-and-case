@@ -81,7 +81,7 @@
                         arr[j+1]=temp;
                     };
                     //冒泡一次后等待500ms映射到dom
-                    await next().then(function(){update(arr,i,j)});
+                    await next(update(arr,i,j));
                 }
             }
             //排序完成全部为橙色
